@@ -34,8 +34,8 @@ fn read(s: &String) -> Result<String, io::Error> {
 }
 fn comp(query: &String, cont: String) {
     if cont.len() == 0 { return; }
-    // let _v: Vec<&str> = Vec::new();
-    let lines: Vec<&str> = cont.lines().collect();
+    //
+    let lines = cont.lines();
     for line in lines {
         if line.contains(query) {
             println!("{line}");
