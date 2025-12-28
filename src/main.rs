@@ -6,20 +6,14 @@ fn main() {
         exit();
         return;
     }
-
     let query = &args[1];
     let file_path = &args[2];
 
-    let ct = read(file_path);
-
-    if let Ok(cont) = ct {
-        // println!("{query}");
-        // println!("With text:\r\n{cont}");
-        comp(query, cont);
-        //
-    } else if let Err(e) = ct {
-        println!("{e}");
-        return;
+    match read(file_path) {
+        Ok(cont) => {
+            comp(query, cont);
+            }
+        Err(e) => { println!("{e}"); }
     }
 }
 
@@ -35,8 +29,7 @@ fn read(s: &String) -> Result<String, io::Error> {
 fn comp(query: &String, cont: String) {
     if cont.len() == 0 { return; }
     //
-    let lines = cont.lines();
-    for line in lines {
+    for line in cont.lines() {
         if line.contains(query) {
             println!("{line}");
         }
