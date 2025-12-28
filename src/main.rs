@@ -13,12 +13,12 @@ fn main() {
         Ok(cont) => {
             comp(query, cont);
             }
-        Err(e) => { println!("{e}"); }
+        Err(e) => { eprintln!("{e}"); }
     }
 }
 
 fn exit() {
-    println!("usage: minigrep PATTERN FILE");
+    eprintln!("usage: minigrep PATTERN FILE");
     // std::process::exit(0);
 }
 fn read(s: &String) -> Result<String, io::Error> {
